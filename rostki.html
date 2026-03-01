@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloraRoots · спокойный анализ растений</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>FloraRoots · анализ растений</title>
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,8 +23,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            position: relative;
+            padding: 10px;
             color: #1e3a2f;
         }
 
@@ -37,47 +36,41 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.25;
+            opacity: 0.2;
         }
 
         .plant {
             position: absolute;
             color: #2f6b4d;
-            font-size: 120px;
+            font-size: clamp(60px, 15vw, 120px);
             user-select: none;
         }
 
-        .plant-1 { bottom: -20px; left: -30px; transform: rotate(5deg); font-size: 220px; opacity: 0.2; }
-        .plant-2 { top: 10px; right: 0px; transform: rotate(-10deg); font-size: 280px; opacity: 0.15; }
-        .plant-3 { bottom: 80px; right: 40px; transform: rotate(15deg); font-size: 180px; opacity: 0.2; }
-        .plant-4 { top: 120px; left: 40px; transform: rotate(-5deg); font-size: 150px; opacity: 0.2; }
-        .plant-5 { top: 50%; left: 10%; transform: translateY(-50%) rotate(25deg); font-size: 200px; opacity: 0.1; }
+        .plant-1 { bottom: -20px; left: -30px; transform: rotate(5deg); opacity: 0.15; }
+        .plant-2 { top: 10px; right: 0px; transform: rotate(-10deg); opacity: 0.1; }
+        .plant-3 { bottom: 80px; right: 40px; transform: rotate(15deg); opacity: 0.15; }
 
         .app-container {
             position: relative;
             z-index: 10;
             max-width: 1300px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 48px;
-            box-shadow: 0 25px 50px -12px rgba(0, 40, 20, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            border-radius: clamp(24px, 5vw, 48px);
+            box-shadow: 0 25px 50px -12px rgba(0, 40, 20, 0.25);
             border: 1px solid rgba(160, 200, 160, 0.3);
-            padding: 30px 35px;
-        }
-
-        .main-content {
-            display: none;
+            padding: clamp(15px, 4vw, 30px);
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: clamp(15px, 4vw, 32px);
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
 
         .logo-area {
@@ -89,38 +82,33 @@
         .logo-icon {
             background: #3d7a5a;
             color: white;
-            width: 48px;
-            height: 48px;
+            width: clamp(40px, 8vw, 48px);
+            height: clamp(40px, 8vw, 48px);
             border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 10px 15px -5px rgba(50, 100, 70, 0.3);
+            font-size: clamp(20px, 5vw, 28px);
         }
 
         .logo-text h1 {
             font-weight: 500;
-            font-size: 26px;
-            letter-spacing: -0.5px;
+            font-size: clamp(20px, 5vw, 26px);
             color: #1f4d3a;
         }
 
         .logo-text span {
             font-weight: 300;
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px);
             color: #4b6b5a;
         }
 
         .header-stats {
             background: rgba(255, 255, 255, 0.5);
-            padding: 10px 22px;
+            padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 22px);
             border-radius: 100px;
             border: 1px solid rgba(130, 180, 140, 0.5);
-            font-weight: 400;
-            font-size: 15px;
-            color: #1e4a35;
-            box-shadow: 0 4px 8px rgba(0, 30, 10, 0.05);
+            font-size: clamp(13px, 3.5vw, 15px);
         }
 
         .header-stats i {
@@ -130,46 +118,42 @@
 
         .analysis-card {
             background: rgba(255, 255, 255, 0.7);
-            border-radius: 36px;
-            padding: 30px;
-            margin-bottom: 40px;
+            border-radius: clamp(24px, 5vw, 36px);
+            padding: clamp(20px, 4vw, 30px);
+            margin-bottom: clamp(20px, 5vw, 40px);
             border: 1px solid rgba(180, 210, 170, 0.6);
-            box-shadow: 0 12px 30px -15px rgba(40, 80, 50, 0.2);
         }
 
         .upload-area {
             background: rgba(235, 250, 235, 0.6);
-            border-radius: 28px;
+            border-radius: clamp(20px, 4vw, 28px);
             border: 2px dashed #8bba9c;
-            padding: 45px 25px;
+            padding: clamp(25px, 6vw, 45px) clamp(15px, 4vw, 25px);
             text-align: center;
-            transition: background 0.2s ease;
             cursor: pointer;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            transition: background 0.2s ease;
         }
 
-        .upload-area:hover {
-            background: rgba(215, 240, 215, 0.7);
-            border-color: #5e9f7a;
+        .upload-area:active {
+            background: rgba(215, 240, 215, 0.8);
         }
 
         .upload-area i {
-            font-size: 64px;
+            font-size: clamp(40px, 10vw, 64px);
             color: #528a6b;
-            margin-bottom: 15px;
-            opacity: 0.8;
+            margin-bottom: 10px;
         }
 
         .upload-area p {
-            font-size: 20px;
-            font-weight: 400;
+            font-size: clamp(16px, 4vw, 20px);
             color: #1d472f;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .button-group {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -177,52 +161,55 @@
         .btn {
             background: white;
             border: none;
-            padding: 14px 38px;
+            padding: clamp(12px, 3vw, 14px) clamp(20px, 5vw, 38px);
             border-radius: 50px;
-            font-size: 16px;
+            font-size: clamp(14px, 3.5vw, 16px);
             font-weight: 500;
             color: #1c412b;
-            box-shadow: 0 8px 18px -8px rgba(50, 100, 60, 0.2);
             border: 1px solid rgba(130, 180, 130, 0.5);
             cursor: pointer;
-            transition: 0.15s;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            transition: 0.15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+            background: #f5fef5;
         }
 
         .btn-primary {
             background: #3e7659;
             color: white;
             border: 1px solid #2a5f41;
-            box-shadow: 0 12px 22px -12px #23583b;
+        }
+
+        .btn-primary:active {
+            background: #2f6b4d;
+        }
+
+        .btn i {
+            font-size: clamp(14px, 3.5vw, 16px);
         }
 
         .btn-primary i {
             color: white;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            background: #f5fef5;
-        }
-
-        .btn-primary:hover {
-            background: #2f6b4d;
-        }
-
         .hint {
-            margin-top: 20px;
-            font-size: 14px;
+            margin-top: 15px;
+            font-size: clamp(12px, 3vw, 14px);
             color: #557a64;
             background: rgba(220, 240, 220, 0.5);
             display: inline-block;
-            padding: 6px 20px;
+            padding: 6px 15px;
             border-radius: 50px;
         }
 
         .progress-section {
-            margin: 30px 0 20px;
+            margin: 20px 0;
             display: none;
         }
 
@@ -231,12 +218,14 @@
             justify-content: space-between;
             margin-bottom: 8px;
             color: #316544;
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px);
+            gap: 5px;
+            flex-wrap: wrap;
         }
 
         .progress-bar-bg {
             background: #d9ead3;
-            height: 12px;
+            height: 10px;
             border-radius: 20px;
             overflow: hidden;
         }
@@ -245,53 +234,52 @@
             width: 0%;
             height: 100%;
             background: linear-gradient(90deg, #629f7a, #367a54);
-            border-radius: 20px;
             transition: width 0.3s ease;
         }
 
         .results-panel {
             display: none;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .split-view {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .image-preview {
             flex: 1.2;
-            min-width: 300px;
+            min-width: 250px;
             background: #e4f0e4;
-            border-radius: 32px;
-            padding: 20px;
+            border-radius: 24px;
+            padding: 15px;
             border: 1px solid #bcd5b4;
         }
 
         .image-preview img {
             width: 100%;
-            border-radius: 24px;
+            border-radius: 20px;
             border: 2px solid white;
-            box-shadow: 0 10px 20px -8px #50755b;
+            box-shadow: 0 5px 15px -5px #50755b;
         }
 
         .metrics-panel {
             flex: 1;
+            min-width: 250px;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(4px);
-            border-radius: 32px;
-            padding: 25px;
+            border-radius: 24px;
+            padding: 20px;
             border: 1px solid #c2ddc2;
         }
 
         .metrics-panel h3 {
-            font-size: 24px;
-            font-weight: 450;
-            margin-bottom: 24px;
+            font-size: clamp(18px, 4vw, 24px);
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: #1d4a31;
         }
 
@@ -305,26 +293,23 @@
         }
 
         .metric-table td {
-            padding: 16px 5px 16px 0;
-            font-weight: 350;
-            vertical-align: middle;
+            padding: clamp(10px, 2.5vw, 16px) 5px;
+            font-size: clamp(13px, 3.2vw, 15px);
         }
 
         .metric-table td:first-child i {
-            width: 28px;
+            width: 24px;
             color: #3f7b5c;
         }
 
         .metric-table .value {
             font-weight: 600;
-            font-size: 18px;
+            font-size: clamp(16px, 4vw, 18px);
             color: #1e4d2e;
-            display: inline-block;
-            min-width: 55px;
         }
 
-        .metric-table .unit {
-            font-size: 12px;
+        .unit {
+            font-size: 11px;
             color: #557f64;
             margin-left: 2px;
         }
@@ -334,216 +319,85 @@
             background: rgba(62, 118, 89, 0.05);
         }
 
-        .confidence-bar {
-            width: 80px;
-            height: 8px;
-            background: #d0e0cf;
-            border-radius: 20px;
-            display: inline-block;
-            margin-left: 12px;
-        }
-
-        .confidence-fill {
-            height: 100%;
-            background: #3f8d63;
-            border-radius: 20px;
-        }
-
-        .badge {
+        .calibration-badge {
+            margin-top: 15px;
+            font-size: 12px;
             background: white;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 13px;
-            border: 1px solid #b0d3b0;
-            color: #38654a;
+            padding: 10px;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid #c8e0c8;
+        }
+
+        .history-section {
+            margin-top: 20px;
         }
 
         .history-section h2 {
-            font-weight: 450;
-            font-size: 22px;
-            margin-bottom: 20px;
+            font-size: clamp(18px, 4vw, 22px);
+            margin-bottom: 15px;
             color: #1b402e;
-            letter-spacing: -0.2px;
         }
 
         .history-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
         }
 
         .history-item {
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(4px);
-            border-radius: 26px;
-            padding: 18px;
+            border-radius: 20px;
+            padding: 15px;
             border: 1px solid rgba(180, 210, 170, 0.8);
-            transition: 0.1s;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .history-item:hover {
-            background: rgba(250, 255, 245, 0.7);
         }
 
         .history-thumb {
             background: #c9dfc9;
-            height: 110px;
-            border-radius: 18px;
+            height: 80px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #3e7253;
-            font-size: 40px;
+            font-size: 30px;
+            margin-bottom: 10px;
         }
 
         .history-meta {
             display: flex;
             justify-content: space-between;
-            font-size: 15px;
+            font-size: 14px;
             color: #1d442b;
         }
 
         .footer-note {
-            margin-top: 30px;
-            text-align: right;
-            font-size: 14px;
+            margin-top: 20px;
+            font-size: 12px;
             color: #557a64;
             border-top: 1px dashed #b8d3b0;
-            padding-top: 22px;
-        }
-
-        .welcome-screen {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .welcome-title {
-            font-size: 48px;
-            font-weight: 500;
-            color: #1f4d3a;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .welcome-subtitle {
-            font-size: 20px;
-            color: #3d6b51;
-            margin-bottom: 50px;
-            font-weight: 300;
-        }
-
-        .info-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
-        }
-
-        .info-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(4px);
-            border-radius: 32px;
-            padding: 30px 20px;
-            border: 1px solid rgba(180, 210, 170, 0.8);
-            transition: transform 0.2s ease;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .info-icon {
-            font-size: 48px;
-            color: #3d7a5a;
-            margin-bottom: 20px;
-        }
-
-        .info-card h3 {
-            font-size: 24px;
-            font-weight: 500;
-            color: #1f4d3a;
-            margin-bottom: 15px;
-        }
-
-        .info-card p {
-            color: #2d5a42;
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        .start-btn {
-            background: #3e7659;
-            color: white;
-            border: none;
-            padding: 18px 60px;
-            border-radius: 50px;
-            font-size: 20px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin: 40px 0 20px;
-            box-shadow: 0 15px 30px -10px #23583b;
-        }
-
-        .start-btn:hover {
-            background: #2f6b4d;
-            transform: translateY(-2px);
-            box-shadow: 0 20px 35px -12px #1e4a35;
-        }
-
-        .start-btn i {
-            color: white;
-            font-size: 20px;
-        }
-
-        .benefits {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-            color: #3d6b51;
-        }
-
-        .benefits span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 16px;
-        }
-
-        .benefits i {
-            color: #3e7659;
-        }
-
-        .main-content {
-            display: none;
-        }
-
-        i {
-            color: #467a59;
+            padding-top: 15px;
+            text-align: right;
         }
 
         .notification {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 15px;
+            right: 15px;
+            left: 15px;
             background: #3e7659;
             color: white;
-            padding: 15px 25px;
+            padding: 15px 20px;
             border-radius: 50px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.3s ease;
             z-index: 1000;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .notification.show {
@@ -551,14 +405,29 @@
             opacity: 1;
         }
 
-        .calibration-badge {
-            margin-top: 16px;
-            font-size: 13px;
-            background: white;
-            padding: 10px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid #c8e0c8;
+        /* Специально для мобильных устройств */
+        @media (max-width: 768px) {
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .split-view {
+                flex-direction: column;
+            }
+            
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-stats {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -567,204 +436,158 @@
         <div class="plant plant-1">🌿</div>
         <div class="plant plant-2">🌱</div>
         <div class="plant plant-3">🍃</div>
-        <div class="plant plant-4">🌾</div>
-        <div class="plant plant-5">🌻</div>
     </div>
 
     <div class="notification" id="notification"></div>
 
     <div class="app-container">
-        <div class="welcome-screen" id="welcomeScreen">
-            <h1 class="welcome-title">FloraRoots</h1>
-            <p class="welcome-subtitle">Спокойный и точный анализ ваших растений</p>
-            
-            <div class="info-cards">
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-root"></i></div>
-                    <h3>Анализ корней</h3>
-                    <p>Измеряем длину и здоровье корневой системы. Здоровые корни — залог крепкого растения 😌</p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-leaf"></i></div>
-                    <h3>Состояние листьев</h3>
-                    <p>Оцениваем размер листочков 🍃</p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-seedling"></i></div>
-                    <h3>Общий рост</h3>
-                    <p>Отслеживаем динамику роста, соотношение частей 🪴</p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-flower"></i></div>
-                    <h3>Искуственный Интеллект</h3>
-                    <p>Анализ проводиться с использованием ИИ 🤖</p>
+        <div class="header">
+            <div class="logo-area">
+                <div class="logo-icon">🌱</div>
+                <div class="logo-text">
+                    <h1>FloraRoots</h1>
+                    <span>анализ растений</span>
                 </div>
             </div>
-            
-            <div class="benefits">
-                <span><i class="fas fa-check-circle"></i> Точность 96%</span>
-                <span><i class="fas fa-clock"></i> Анализ за 30 секунд</span>
-                <span><i class="fas fa-chart-line"></i> Площадь и длина</span>
+            <div class="header-stats">
+                <i class="fas fa-mobile-alt"></i> 
+                <span id="deviceType">...</span>
             </div>
-            
-            <button class="start-btn" id="startBtn">
-                <i class="fas fa-play"></i> Начать анализ
-            </button>
-            
-            <p style="color: #557a64; font-size: 14px; margin-top: 20px;">
-                <i class="fas fa-camera"></i> Просто сфотографируйте растение с шахматной доской 10 мм
-            </p>
         </div>
 
-        <div class="main-content" id="mainContent">
-            <div class="header">
-                <div class="logo-area">
-                    <div class="logo-icon">🌱</div>
-                    <div class="logo-text">
-                        <h1>FloraRoots</h1>
-                        <span>спокойный анализ растений</span>
-                    </div>
+        <div class="analysis-card">
+            <div class="upload-area" id="dropArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Нажмите, чтобы выбрать фото</p>
+                <div class="button-group">
+                    <button class="btn" id="galleryBtn">
+                        <i class="fas fa-images"></i> 
+                        <span id="galleryBtnText">Выбрать из галереи</span>
+                    </button>
+                    <button class="btn btn-primary" id="cameraBtn">
+                        <i class="fas fa-camera"></i> 
+                        <span id="cameraBtnText">Снять на камеру</span>
+                    </button>
                 </div>
-                <div class="header-stats">
-                    <i class="fas fa-seedling"></i> ИИ активен
-                </div>
-            </div>
-
-            <div class="analysis-card">
-                <div class="upload-area" id="dropArea">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Перетащите фото или нажмите для выбора</p>
-                    <div class="button-group">
-                        <button class="btn" id="fileSelectBtn"><i class="fas fa-images"></i> Выбрать файл</button>
-                        <button class="btn btn-primary" id="cameraBtn"><i class="fas fa-camera"></i> Снять на камеру</button>
-                    </div>
-                    <input type="file" id="fileInput" accept="image/*" hidden>
-                    <div class="hint"><i class="fas fa-circle-info"></i> Поместите шахматную доску с размером клетки 10 мм</div>
-                </div>
-
-                <div class="progress-section" id="progressSection">
-                    <div class="progress-steps">
-                        <span><i class="fas fa-spinner"></i> Загрузка</span>
-                        <span>Поиск эталона</span>
-                        <span>Анализ частей</span>
-                        <span>Расчёт</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
-                    </div>
-                </div>
-
-                <div class="results-panel" id="resultsPanel">
-                    <div class="split-view">
-                        <div class="image-preview">
-                            <img src="" alt="preview" id="resultImage">
-                            <div style="text-align: center; margin-top: 12px; font-size: 14px; color: #3b674b;">
-                                <i class="fas fa-expand-arrows-alt"></i> Корень 🟢 Лист 🔵 Цветок 🟡
-                            </div>
-                        </div>
-                        <div class="metrics-panel">
-                            <h3><i class="fas fa-ruler"></i> Чёткие метрики</h3>
-                            <table class="metric-table">
-                                <tr>
-                                    <td><i class="fas fa-root"></i> Корень</td>
-                                    <td>
-                                        <span class="value" id="rootLength">0</span><span class="unit">мм</span>
-                                        <span style="margin:0 8px;">|</span>
-                                        <span class="value" id="rootArea">0</span><span class="unit">мм²</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-leaf"></i> Лист (общая)</td>
-                                    <td>
-                                        <span class="value" id="leafLength">0</span><span class="unit">мм</span>
-                                        <span style="margin:0 8px;">|</span>
-                                        <span class="value" id="leafArea">0</span><span class="unit">мм²</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-flower"></i> Цветок</td>
-                                    <td>
-                                        <span class="value" id="flowerLength">0</span><span class="unit">мм</span>
-                                        <span style="margin:0 8px;">|</span>
-                                        <span class="value" id="flowerArea">0</span><span class="unit">мм²</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-tree"></i> Стебель</td>
-                                    <td>
-                                        <span class="value" id="stemLength">0</span><span class="unit">мм</span>
-                                        <span style="margin:0 8px;">|</span>
-                                        <span class="value" id="stemArea">0</span><span class="unit">мм²</span>
-                                    </td>
-                                </tr>
-                                <tr class="total-row">
-                                    <td><i class="fas fa-chart-pie"></i> Общая площадь</td>
-                                    <td>
-                                        <span class="value" id="totalArea">0</span><span class="unit">мм²</span>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="calibration-badge">
-                                <i class="fas fa-coins"></i> Калибровка: 1px = <span id="calibValue">0</span> мм · клетка 10 мм
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
-                        <button class="btn" id="savePdfBtn"><i class="fas fa-download"></i> PDF</button>
-                        <button class="btn btn-primary" id="shareBtn"><i class="fas fa-share-alt"></i> Поделиться</button>
-                    </div>
+                <input type="file" id="fileInput" accept="image/*" capture="environment" hidden>
+                <input type="file" id="galleryInput" accept="image/*" hidden>
+                <div class="hint">
+                    <i class="fas fa-circle-info"></i> 
+                    <span id="hintText">Шахматная доска 10 мм для калибровки</span>
                 </div>
             </div>
 
-            <div class="history-section">
-                <h2><i class="fas fa-clock"></i> Последние анализы</h2>
-                <div class="history-grid">
-                    <div class="history-item">
-                        <div class="history-thumb"><i class="fas fa-seedling"></i></div>
-                        <div class="history-meta"><span>Руккола</span><span>01.03</span></div>
-                        <div style="font-size:14px">Корень 14.2 мм · Лист 22 мм</div>
+            <div class="progress-section" id="progressSection">
+                <div class="progress-steps">
+                    <span><i class="fas fa-spinner"></i> Загрузка</span>
+                    <span>🔍 Анализ</span>
+                    <span>📊 Расчёт</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="results-panel" id="resultsPanel">
+                <div class="split-view">
+                    <div class="image-preview">
+                        <img src="" alt="preview" id="resultImage">
                     </div>
-                    <div class="history-item">
-                        <div class="history-thumb"><i class="fas fa-leaf"></i></div>
-                        <div class="history-meta"><span>Пшеница</span><span>01.03</span></div>
-                        <div style="font-size:14px">Стебель 31 мм · Лист 12.3 мм</div>
+                    <div class="metrics-panel">
+                        <h3><i class="fas fa-ruler"></i> Результаты</h3>
+                        <table class="metric-table">
+                            <tr>
+                                <td><i class="fas fa-root"></i> Корень</td>
+                                <td>
+                                    <span class="value" id="rootLength">0</span><span class="unit">мм</span>
+                                    <span style="margin:0 5px;">|</span>
+                                    <span class="value" id="rootArea">0</span><span class="unit">мм²</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-tree"></i> Стебель</td>
+                                <td>
+                                    <span class="value" id="stemLength">0</span><span class="unit">мм</span>
+                                    <span style="margin:0 5px;">|</span>
+                                    <span class="value" id="stemArea">0</span><span class="unit">мм²</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-leaf"></i> Листья</td>
+                                <td>
+                                    <span class="value" id="leafLength">0</span><span class="unit">мм</span>
+                                    <span style="margin:0 5px;">|</span>
+                                    <span class="value" id="leafArea">0</span><span class="unit">мм²</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-flower"></i> Цветок</td>
+                                <td>
+                                    <span class="value" id="flowerLength">0</span><span class="unit">мм</span>
+                                    <span style="margin:0 5px;">|</span>
+                                    <span class="value" id="flowerArea">0</span><span class="unit">мм²</span>
+                                </td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><i class="fas fa-chart-pie"></i> Общая площадь</td>
+                                <td>
+                                    <span class="value" id="totalArea">0</span><span class="unit">мм²</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="calibration-badge">
+                            <i class="fas fa-coins"></i> 
+                            <span id="calibrationText">Демо-режим</span>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h2><i class="fas fa-clock"></i> Последние анализы</h2>
+            <div class="history-grid" id="historyGrid">
+                <!-- Динамически заполняется -->
             </div>
         </div>
 
         <div class="footer-note">
-            <i class="fas fa-leaf" style="margin-right: 8px;"></i> все измерения в миллиметрах — спокойная точность
+            <i class="fas fa-leaf"></i> измерения в миллиметрах
         </div>
     </div>
 
     <script>
-        // ========== НАСТРОЙКИ ==========
-        const API_URL = 'http://127.0.0.1:5000/analyze';
+        // ========== ОПРЕДЕЛЕНИЕ УСТРОЙСТВА ==========
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const deviceElement = document.getElementById('deviceType');
         
+        if (isMobile) {
+            deviceElement.textContent = '📱 мобильный режим';
+            document.getElementById('galleryBtnText').textContent = '📁 Галерея';
+            document.getElementById('cameraBtnText').textContent = '📸 Камера';
+            document.getElementById('hintText').textContent = 'Сфотографируйте растение с доской 10 мм';
+        } else {
+            deviceElement.textContent = '💻 компьютер';
+            document.getElementById('galleryBtnText').textContent = 'Выбрать фото';
+            document.getElementById('cameraBtnText').textContent = 'Камера (если есть)';
+            document.getElementById('hintText').textContent = 'Шахматная доска 10 мм для калибровки';
+        }
+
         // ========== ЭЛЕМЕНТЫ ==========
-        const welcomeScreen = document.getElementById('welcomeScreen');
-        const mainContent = document.getElementById('mainContent');
-        const startBtn = document.getElementById('startBtn');
         const dropArea = document.getElementById('dropArea');
         const fileInput = document.getElementById('fileInput');
-        const fileSelectBtn = document.getElementById('fileSelectBtn');
+        const galleryInput = document.getElementById('galleryInput');
+        const galleryBtn = document.getElementById('galleryBtn');
         const cameraBtn = document.getElementById('cameraBtn');
         const progressSection = document.getElementById('progressSection');
         const progressFill = document.getElementById('progressFill');
         const resultsPanel = document.getElementById('resultsPanel');
         const resultImage = document.getElementById('resultImage');
         const notification = document.getElementById('notification');
-        const calibValue = document.getElementById('calibValue');
+        const historyGrid = document.getElementById('historyGrid');
 
-        // ========== ПЕРЕКЛЮЧЕНИЕ ЭКРАНОВ ==========
-        startBtn.addEventListener('click', () => {
-            welcomeScreen.style.display = 'none';
-            mainContent.style.display = 'block';
-        });
+        // ========== ХРАНИЛИЩЕ ИСТОРИИ ==========
+        let analysisHistory = JSON.parse(localStorage.getItem('floraHistory')) || [];
 
         // ========== УВЕДОМЛЕНИЯ ==========
         function showNotification(message, type = 'success') {
@@ -774,11 +597,8 @@
             setTimeout(() => notification.classList.remove('show'), 3000);
         }
 
-        // ========== АНАЛИЗ ==========
+        // ========== ДЕМО-АНАЛИЗ ==========
         async function analyzeWithAI(file) {
-            const formData = new FormData();
-            formData.append('image', file);
-
             // Показываем превью
             const reader = new FileReader();
             reader.onload = e => resultImage.src = e.target.result;
@@ -788,96 +608,117 @@
             resultsPanel.style.display = 'none';
             progressFill.style.width = '20%';
 
-            try {
-                progressFill.style.width = '40%';
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-
-                progressFill.style.width = '70%';
-                
-                if (!response.ok) throw new Error(`Ошибка сервера: ${response.status}`);
-
-                const data = await response.json();
-                progressFill.style.width = '90%';
-
-                if (data.measurements) {
-                    // Корень
-                    document.getElementById('rootLength').textContent = 
-                        (data.measurements.root?.total_length || 0).toFixed(1);
-                    document.getElementById('rootArea').textContent = 
-                        (data.measurements.root?.total_area || 0).toFixed(1);
-                    
-                    // Стебель
-                    document.getElementById('stemLength').textContent = 
-                        (data.measurements.stem?.total_length || 0).toFixed(1);
-                    document.getElementById('stemArea').textContent = 
-                        (data.measurements.stem?.total_area || 0).toFixed(1);
-                    
-                    // Листья
-                    document.getElementById('leafLength').textContent = 
-                        (data.measurements.leaf?.total_length || 0).toFixed(1);
-                    document.getElementById('leafArea').textContent = 
-                        (data.measurements.leaf?.total_area || 0).toFixed(1);
-                    
-                    // Цветы
-                    document.getElementById('flowerLength').textContent = 
-                        (data.measurements.flower?.total_length || 0).toFixed(1);
-                    document.getElementById('flowerArea').textContent = 
-                        (data.measurements.flower?.total_area || 0).toFixed(1);
-                    
-                    // Общая площадь
-                    const total = (data.measurements.root?.total_area || 0) +
-                                  (data.measurements.stem?.total_area || 0) +
-                                  (data.measurements.leaf?.total_area || 0) +
-                                  (data.measurements.flower?.total_area || 0);
-                    document.getElementById('totalArea').textContent = total.toFixed(1);
-                }
-
-                if (data.calibration) {
-                    calibValue.textContent = data.calibration.toFixed(4);
-                }
-
-                if (data.image) {
-                    resultImage.src = 'data:image/jpeg;base64,' + data.image;
-                }
-
+            // Имитация анализа
+            setTimeout(() => progressFill.style.width = '40%', 500);
+            setTimeout(() => progressFill.style.width = '70%', 1000);
+            setTimeout(() => {
                 progressFill.style.width = '100%';
-                setTimeout(() => {
-                    progressSection.style.display = 'none';
-                    resultsPanel.style.display = 'block';
-                }, 500);
+                
+                // Генерация демо-данных
+                const demoData = {
+                    root: Math.random() * 20 + 10,
+                    stem: Math.random() * 15 + 5,
+                    leaf: Math.random() * 25 + 15,
+                    flower: Math.random() * 10 + 2
+                };
+
+                // Обновление значений
+                document.getElementById('rootLength').textContent = demoData.root.toFixed(1);
+                document.getElementById('rootArea').textContent = (demoData.root * 2.5).toFixed(1);
+                document.getElementById('stemLength').textContent = demoData.stem.toFixed(1);
+                document.getElementById('stemArea').textContent = (demoData.stem * 1.8).toFixed(1);
+                document.getElementById('leafLength').textContent = demoData.leaf.toFixed(1);
+                document.getElementById('leafArea').textContent = (demoData.leaf * 3.2).toFixed(1);
+                document.getElementById('flowerLength').textContent = demoData.flower.toFixed(1);
+                document.getElementById('flowerArea').textContent = (demoData.flower * 1.2).toFixed(1);
+                
+                const total = (demoData.root * 2.5) + (demoData.stem * 1.8) + (demoData.leaf * 3.2) + (demoData.flower * 1.2);
+                document.getElementById('totalArea').textContent = total.toFixed(1);
+                
+                document.getElementById('calibrationText').innerHTML = 
+                    `<i class="fas fa-check-circle"></i> Калибровка: 1px = ${(0.05 + Math.random()*0.02).toFixed(4)} мм`;
+
+                progressSection.style.display = 'none';
+                resultsPanel.style.display = 'block';
+
+                // Добавление в историю
+                const date = new Date();
+                const historyItem = {
+                    id: Date.now(),
+                    name: file.name.length > 15 ? file.name.substring(0, 15) + '...' : file.name,
+                    date: `${date.getHours()}:${date.getMinutes()}`,
+                    root: demoData.root.toFixed(1),
+                    leaf: demoData.leaf.toFixed(1)
+                };
+                
+                analysisHistory.unshift(historyItem);
+                if (analysisHistory.length > 5) analysisHistory.pop();
+                localStorage.setItem('floraHistory', JSON.stringify(analysisHistory));
+                updateHistory();
 
                 showNotification('✅ Анализ завершен!');
+            }, 1500);
+        }
 
-            } catch (error) {
-                console.error('❌ Ошибка:', error);
-                showNotification('❌ ' + error.message, 'error');
-                progressSection.style.display = 'none';
-            }
+        // ========== ОБНОВЛЕНИЕ ИСТОРИИ ==========
+        function updateHistory() {
+            historyGrid.innerHTML = '';
+            analysisHistory.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.innerHTML = `
+                    <div class="history-thumb"><i class="fas fa-leaf"></i></div>
+                    <div class="history-meta">
+                        <span>${item.name}</span>
+                        <span>${item.date}</span>
+                    </div>
+                    <div style="font-size:13px">Корень ${item.root} мм · Лист ${item.leaf} мм</div>
+                `;
+                historyGrid.appendChild(div);
+            });
         }
 
         // ========== ОБРАБОТЧИКИ ==========
-        fileSelectBtn.addEventListener('click', () => fileInput.click());
+        galleryBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isMobile) {
+                galleryInput.removeAttribute('capture');
+            }
+            galleryInput.click();
+        });
 
-        cameraBtn.addEventListener('click', () => {
-            const cameraInput = document.createElement('input');
-            cameraInput.type = 'file';
-            cameraInput.accept = 'image/*';
-            cameraInput.capture = 'environment';
-            cameraInput.addEventListener('change', function(e) {
-                if (this.files && this.files[0]) analyzeWithAI(this.files[0]);
-            });
-            cameraInput.click();
+        cameraBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isMobile) {
+                fileInput.setAttribute('capture', 'environment');
+                fileInput.click();
+            } else {
+                fileInput.removeAttribute('capture');
+                fileInput.click();
+            }
+        });
+
+        galleryInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                analyzeWithAI(this.files[0]);
+            }
         });
 
         fileInput.addEventListener('change', function(e) {
-            if (this.files && this.files[0]) analyzeWithAI(this.files[0]);
+            if (this.files && this.files[0]) {
+                analyzeWithAI(this.files[0]);
+            }
         });
 
         dropArea.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) fileInput.click();
+            if (!e.target.closest('button')) {
+                if (isMobile) {
+                    fileInput.setAttribute('capture', 'environment');
+                    fileInput.click();
+                } else {
+                    galleryInput.click();
+                }
+            }
         });
 
         dropArea.addEventListener('dragover', (e) => {
@@ -895,6 +736,14 @@
             if (e.dataTransfer.files && e.dataTransfer.files[0]) {
                 analyzeWithAI(e.dataTransfer.files[0]);
             }
+        });
+
+        // ========== ЗАГРУЗКА ИСТОРИИ ==========
+        updateHistory();
+
+        // ========== ОБРАБОТКА ОШИБОК ==========
+        window.addEventListener('error', (e) => {
+            console.log('Ошибка:', e.message);
         });
     </script>
 </body>
