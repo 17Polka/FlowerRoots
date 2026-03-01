@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>FloraRoots · анализ растений</title>
-    <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* СТИЛИ КАК В ОРИГИНАЛЕ, НО АДАПТИВНЫЕ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f2f7f2;
@@ -26,408 +21,119 @@
             padding: 10px;
             color: #1e3a2f;
         }
-
-        /* декоративные растения на фоне */
         .plant-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.2;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.2;
         }
-
-        .plant {
-            position: absolute;
-            color: #2f6b4d;
-            font-size: clamp(60px, 15vw, 120px);
-            user-select: none;
-        }
-
+        .plant { position: absolute; color: #2f6b4d; font-size: clamp(60px, 15vw, 120px); }
         .plant-1 { bottom: -20px; left: -30px; transform: rotate(5deg); opacity: 0.15; }
         .plant-2 { top: 10px; right: 0px; transform: rotate(-10deg); opacity: 0.1; }
         .plant-3 { bottom: 80px; right: 40px; transform: rotate(15deg); opacity: 0.15; }
-
         .app-container {
-            position: relative;
-            z-index: 10;
-            max-width: 1300px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: relative; z-index: 10; max-width: 1300px; width: 100%;
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px);
             border-radius: clamp(24px, 5vw, 48px);
             box-shadow: 0 25px 50px -12px rgba(0, 40, 20, 0.25);
             border: 1px solid rgba(160, 200, 160, 0.3);
             padding: clamp(15px, 4vw, 30px);
         }
-
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: clamp(15px, 4vw, 32px);
-            flex-wrap: wrap;
-            gap: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: clamp(15px, 4vw, 32px); flex-wrap: wrap; gap: 15px;
         }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        .logo-area { display: flex; align-items: center; gap: 12px; }
         .logo-icon {
-            background: #3d7a5a;
-            color: white;
-            width: clamp(40px, 8vw, 48px);
-            height: clamp(40px, 8vw, 48px);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #3d7a5a; color: white; width: clamp(40px, 8vw, 48px);
+            height: clamp(40px, 8vw, 48px); border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
             font-size: clamp(20px, 5vw, 28px);
         }
-
-        .logo-text h1 {
-            font-weight: 500;
-            font-size: clamp(20px, 5vw, 26px);
-            color: #1f4d3a;
-        }
-
-        .logo-text span {
-            font-weight: 300;
-            font-size: clamp(12px, 3vw, 14px);
-            color: #4b6b5a;
-        }
-
+        .logo-text h1 { font-weight: 500; font-size: clamp(20px, 5vw, 26px); color: #1f4d3a; }
+        .logo-text span { font-weight: 300; font-size: clamp(12px, 3vw, 14px); color: #4b6b5a; }
         .header-stats {
-            background: rgba(255, 255, 255, 0.5);
-            padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 22px);
-            border-radius: 100px;
-            border: 1px solid rgba(130, 180, 140, 0.5);
+            background: rgba(255, 255, 255, 0.5); padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 22px);
+            border-radius: 100px; border: 1px solid rgba(130, 180, 140, 0.5);
             font-size: clamp(13px, 3.5vw, 15px);
         }
-
-        .header-stats i {
-            margin-right: 8px;
-            color: #3e7c5f;
-        }
-
+        .header-stats i { margin-right: 8px; color: #3e7c5f; }
         .analysis-card {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: clamp(24px, 5vw, 36px);
-            padding: clamp(20px, 4vw, 30px);
-            margin-bottom: clamp(20px, 5vw, 40px);
+            background: rgba(255, 255, 255, 0.7); border-radius: clamp(24px, 5vw, 36px);
+            padding: clamp(20px, 4vw, 30px); margin-bottom: clamp(20px, 5vw, 40px);
             border: 1px solid rgba(180, 210, 170, 0.6);
         }
-
         .upload-area {
-            background: rgba(235, 250, 235, 0.6);
-            border-radius: clamp(20px, 4vw, 28px);
-            border: 2px dashed #8bba9c;
-            padding: clamp(25px, 6vw, 45px) clamp(15px, 4vw, 25px);
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: background 0.2s ease;
+            background: rgba(235, 250, 235, 0.6); border-radius: clamp(20px, 4vw, 28px);
+            border: 2px dashed #8bba9c; padding: clamp(25px, 6vw, 45px) clamp(15px, 4vw, 25px);
+            text-align: center; cursor: pointer; margin-bottom: 20px;
         }
-
-        .upload-area:active {
-            background: rgba(215, 240, 215, 0.8);
-        }
-
-        .upload-area i {
-            font-size: clamp(40px, 10vw, 64px);
-            color: #528a6b;
-            margin-bottom: 10px;
-        }
-
-        .upload-area p {
-            font-size: clamp(16px, 4vw, 20px);
-            color: #1d472f;
-            margin-bottom: 15px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
+        .upload-area:active { background: rgba(215, 240, 215, 0.8); }
+        .upload-area i { font-size: clamp(40px, 10vw, 64px); color: #528a6b; margin-bottom: 10px; }
+        .upload-area p { font-size: clamp(16px, 4vw, 20px); color: #1d472f; margin-bottom: 15px; }
+        .button-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .btn {
-            background: white;
-            border: none;
-            padding: clamp(12px, 3vw, 14px) clamp(20px, 5vw, 38px);
-            border-radius: 50px;
-            font-size: clamp(14px, 3.5vw, 16px);
-            font-weight: 500;
-            color: #1c412b;
-            border: 1px solid rgba(130, 180, 130, 0.5);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.15s;
+            background: white; border: none; padding: clamp(12px, 3vw, 14px) clamp(20px, 5vw, 38px);
+            border-radius: 50px; font-size: clamp(14px, 3.5vw, 16px); font-weight: 500;
+            color: #1c412b; border: 1px solid rgba(130, 180, 130, 0.5); cursor: pointer;
+            display: inline-flex; align-items: center; gap: 8px; transition: 0.15s;
             -webkit-tap-highlight-color: transparent;
         }
-
-        .btn:active {
-            transform: translateY(-2px);
-            background: #f5fef5;
-        }
-
-        .btn-primary {
-            background: #3e7659;
-            color: white;
-            border: 1px solid #2a5f41;
-        }
-
-        .btn-primary:active {
-            background: #2f6b4d;
-        }
-
-        .btn i {
-            font-size: clamp(14px, 3.5vw, 16px);
-        }
-
-        .btn-primary i {
-            color: white;
-        }
-
+        .btn:active { transform: translateY(-2px); background: #f5fef5; }
+        .btn-primary { background: #3e7659; color: white; border: 1px solid #2a5f41; }
+        .btn-primary:active { background: #2f6b4d; }
+        .btn-primary i { color: white; }
         .hint {
-            margin-top: 15px;
-            font-size: clamp(12px, 3vw, 14px);
-            color: #557a64;
-            background: rgba(220, 240, 220, 0.5);
-            display: inline-block;
-            padding: 6px 15px;
-            border-radius: 50px;
+            margin-top: 15px; font-size: clamp(12px, 3vw, 14px); color: #557a64;
+            background: rgba(220, 240, 220, 0.5); display: inline-block;
+            padding: 6px 15px; border-radius: 50px;
         }
-
-        .progress-section {
-            margin: 20px 0;
-            display: none;
-        }
-
+        .progress-section { margin: 20px 0; display: none; }
         .progress-steps {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            color: #316544;
-            font-size: clamp(12px, 3vw, 14px);
-            gap: 5px;
-            flex-wrap: wrap;
+            display: flex; justify-content: space-between; margin-bottom: 8px;
+            color: #316544; font-size: clamp(12px, 3vw, 14px); gap: 5px; flex-wrap: wrap;
         }
-
-        .progress-bar-bg {
-            background: #d9ead3;
-            height: 10px;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
+        .progress-bar-bg { background: #d9ead3; height: 10px; border-radius: 20px; overflow: hidden; }
         .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #629f7a, #367a54);
+            width: 0%; height: 100%; background: linear-gradient(90deg, #629f7a, #367a54);
             transition: width 0.3s ease;
         }
-
-        .results-panel {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .split-view {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
+        .results-panel { display: none; margin-top: 20px; }
+        .split-view { display: flex; gap: 20px; flex-wrap: wrap; }
         .image-preview {
-            flex: 1.2;
-            min-width: 250px;
-            background: #e4f0e4;
-            border-radius: 24px;
-            padding: 15px;
-            border: 1px solid #bcd5b4;
+            flex: 1.2; min-width: 250px; background: #e4f0e4; border-radius: 24px;
+            padding: 15px; border: 1px solid #bcd5b4;
         }
-
-        .image-preview img {
-            width: 100%;
-            border-radius: 20px;
-            border: 2px solid white;
-            box-shadow: 0 5px 15px -5px #50755b;
-        }
-
+        .image-preview img { width: 100%; border-radius: 20px; border: 2px solid white; }
         .metrics-panel {
-            flex: 1;
-            min-width: 250px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
-            border-radius: 24px;
-            padding: 20px;
+            flex: 1; min-width: 250px; background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px); border-radius: 24px; padding: 20px;
             border: 1px solid #c2ddc2;
         }
-
-        .metrics-panel h3 {
-            font-size: clamp(18px, 4vw, 24px);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #1d4a31;
-        }
-
-        .metric-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .metric-table tr {
-            border-bottom: 1px solid rgba(130, 170, 130, 0.3);
-        }
-
-        .metric-table td {
-            padding: clamp(10px, 2.5vw, 16px) 5px;
-            font-size: clamp(13px, 3.2vw, 15px);
-        }
-
-        .metric-table td:first-child i {
-            width: 24px;
-            color: #3f7b5c;
-        }
-
-        .metric-table .value {
-            font-weight: 600;
-            font-size: clamp(16px, 4vw, 18px);
-            color: #1e4d2e;
-        }
-
-        .unit {
-            font-size: 11px;
-            color: #557f64;
-            margin-left: 2px;
-        }
-
-        .total-row {
-            border-top: 2px solid #3e7659;
-            background: rgba(62, 118, 89, 0.05);
-        }
-
+        .metrics-panel h3 { font-size: clamp(18px, 4vw, 24px); margin-bottom: 15px; color: #1d4a31; }
+        .metric-table { width: 100%; border-collapse: collapse; }
+        .metric-table tr { border-bottom: 1px solid rgba(130, 170, 130, 0.3); }
+        .metric-table td { padding: clamp(10px, 2.5vw, 16px) 5px; font-size: clamp(13px, 3.2vw, 15px); }
+        .metric-table td:first-child i { width: 24px; color: #3f7b5c; }
+        .metric-table .value { font-weight: 600; font-size: clamp(16px, 4vw, 18px); color: #1e4d2e; }
+        .unit { font-size: 11px; color: #557f64; margin-left: 2px; }
+        .total-row { border-top: 2px solid #3e7659; background: rgba(62, 118, 89, 0.05); }
         .calibration-badge {
-            margin-top: 15px;
-            font-size: 12px;
-            background: white;
-            padding: 10px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid #c8e0c8;
+            margin-top: 15px; font-size: 12px; background: white; padding: 10px;
+            border-radius: 30px; text-align: center; border: 1px solid #c8e0c8;
         }
-
-        .history-section {
-            margin-top: 20px;
-        }
-
-        .history-section h2 {
-            font-size: clamp(18px, 4vw, 22px);
-            margin-bottom: 15px;
-            color: #1b402e;
-        }
-
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 12px;
-        }
-
-        .history-item {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(4px);
-            border-radius: 20px;
-            padding: 15px;
-            border: 1px solid rgba(180, 210, 170, 0.8);
-        }
-
-        .history-thumb {
-            background: #c9dfc9;
-            height: 80px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #3e7253;
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .history-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #1d442b;
-        }
-
-        .footer-note {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #557a64;
-            border-top: 1px dashed #b8d3b0;
-            padding-top: 15px;
-            text-align: right;
-        }
-
+        .footer-note { margin-top: 20px; font-size: 12px; color: #557a64; text-align: right; }
         .notification {
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-            left: 15px;
-            background: #3e7659;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            text-align: center;
-            max-width: 400px;
-            margin: 0 auto;
+            position: fixed; bottom: 15px; right: 15px; left: 15px; max-width: 400px;
+            margin: 0 auto; background: #3e7659; color: white; padding: 15px 20px;
+            border-radius: 50px; transform: translateY(100px); opacity: 0;
+            transition: all 0.3s ease; z-index: 1000; text-align: center;
         }
-
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Специально для мобильных устройств */
+        .notification.show { transform: translateY(0); opacity: 1; }
         @media (max-width: 768px) {
-            .button-group {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .split-view {
-                flex-direction: column;
-            }
-            
-            .history-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-stats {
-                width: 100%;
-                text-align: center;
-            }
+            .button-group { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .split-view { flex-direction: column; }
+            .header-stats { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -446,41 +152,38 @@
                 <div class="logo-icon">🌱</div>
                 <div class="logo-text">
                     <h1>FloraRoots</h1>
-                    <span>анализ растений</span>
+                    <span>анализ растений с ИИ</span>
                 </div>
             </div>
             <div class="header-stats">
-                <i class="fas fa-mobile-alt"></i> 
-                <span id="deviceType">...</span>
+                <i class="fas fa-brain"></i> ИИ активен
             </div>
         </div>
 
         <div class="analysis-card">
             <div class="upload-area" id="dropArea">
                 <i class="fas fa-cloud-upload-alt"></i>
-                <p>Нажмите, чтобы выбрать фото</p>
+                <p>Нажмите или перетащите фото</p>
                 <div class="button-group">
                     <button class="btn" id="galleryBtn">
-                        <i class="fas fa-images"></i> 
-                        <span id="galleryBtnText">Выбрать из галереи</span>
+                        <i class="fas fa-images"></i> Галерея
                     </button>
                     <button class="btn btn-primary" id="cameraBtn">
-                        <i class="fas fa-camera"></i> 
-                        <span id="cameraBtnText">Снять на камеру</span>
+                        <i class="fas fa-camera"></i> Камера
                     </button>
                 </div>
-                <input type="file" id="fileInput" accept="image/*" capture="environment" hidden>
-                <input type="file" id="galleryInput" accept="image/*" hidden>
+                <!-- ДВА РАЗНЫХ INPUT: один для галереи, один для камеры -->
+                <input type="file" id="galleryInput" accept="image/*" style="display: none;">
+                <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;">
                 <div class="hint">
-                    <i class="fas fa-circle-info"></i> 
-                    <span id="hintText">Шахматная доска 10 мм для калибровки</span>
+                    <i class="fas fa-circle-info"></i> Шахматная доска 10 мм для калибровки
                 </div>
             </div>
 
             <div class="progress-section" id="progressSection">
                 <div class="progress-steps">
                     <span><i class="fas fa-spinner"></i> Загрузка</span>
-                    <span>🔍 Анализ</span>
+                    <span>🔍 Анализ ИИ</span>
                     <span>📊 Расчёт</span>
                 </div>
                 <div class="progress-bar-bg">
@@ -492,91 +195,40 @@
                 <div class="split-view">
                     <div class="image-preview">
                         <img src="" alt="preview" id="resultImage">
+                        <div style="text-align: center; margin-top: 12px; font-size: 14px; color: #3b674b;">
+                            <i class="fas fa-expand-arrows-alt"></i> Корень 🟢 Лист 🔵 Цветок 🟡
+                        </div>
                     </div>
                     <div class="metrics-panel">
-                        <h3><i class="fas fa-ruler"></i> Результаты</h3>
+                        <h3><i class="fas fa-ruler"></i> Результаты ИИ</h3>
                         <table class="metric-table">
-                            <tr>
-                                <td><i class="fas fa-root"></i> Корень</td>
-                                <td>
-                                    <span class="value" id="rootLength">0</span><span class="unit">мм</span>
-                                    <span style="margin:0 5px;">|</span>
-                                    <span class="value" id="rootArea">0</span><span class="unit">мм²</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-tree"></i> Стебель</td>
-                                <td>
-                                    <span class="value" id="stemLength">0</span><span class="unit">мм</span>
-                                    <span style="margin:0 5px;">|</span>
-                                    <span class="value" id="stemArea">0</span><span class="unit">мм²</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-leaf"></i> Листья</td>
-                                <td>
-                                    <span class="value" id="leafLength">0</span><span class="unit">мм</span>
-                                    <span style="margin:0 5px;">|</span>
-                                    <span class="value" id="leafArea">0</span><span class="unit">мм²</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-flower"></i> Цветок</td>
-                                <td>
-                                    <span class="value" id="flowerLength">0</span><span class="unit">мм</span>
-                                    <span style="margin:0 5px;">|</span>
-                                    <span class="value" id="flowerArea">0</span><span class="unit">мм²</span>
-                                </td>
-                            </tr>
-                            <tr class="total-row">
-                                <td><i class="fas fa-chart-pie"></i> Общая площадь</td>
-                                <td>
-                                    <span class="value" id="totalArea">0</span><span class="unit">мм²</span>
-                                </td>
-                            </tr>
+                            <tr><td><i class="fas fa-root"></i> Корень</td><td><span class="value" id="rootLength">0</span><span class="unit">мм</span> | <span class="value" id="rootArea">0</span><span class="unit">мм²</span></td></tr>
+                            <tr><td><i class="fas fa-tree"></i> Стебель</td><td><span class="value" id="stemLength">0</span><span class="unit">мм</span> | <span class="value" id="stemArea">0</span><span class="unit">мм²</span></td></tr>
+                            <tr><td><i class="fas fa-leaf"></i> Листья</td><td><span class="value" id="leafLength">0</span><span class="unit">мм</span> | <span class="value" id="leafArea">0</span><span class="unit">мм²</span></td></tr>
+                            <tr><td><i class="fas fa-flower"></i> Цветок</td><td><span class="value" id="flowerLength">0</span><span class="unit">мм</span> | <span class="value" id="flowerArea">0</span><span class="unit">мм²</span></td></tr>
+                            <tr class="total-row"><td><i class="fas fa-chart-pie"></i> Общая площадь</td><td><span class="value" id="totalArea">0</span><span class="unit">мм²</span></td></tr>
                         </table>
                         <div class="calibration-badge">
-                            <i class="fas fa-coins"></i> 
-                            <span id="calibrationText">Демо-режим</span>
+                            <i class="fas fa-coins"></i> <span id="calibrationText">Калибровка по шахматной доске</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="history-section">
-            <h2><i class="fas fa-clock"></i> Последние анализы</h2>
-            <div class="history-grid" id="historyGrid">
-                <!-- Динамически заполняется -->
-            </div>
-        </div>
-
         <div class="footer-note">
-            <i class="fas fa-leaf"></i> измерения в миллиметрах
+            <i class="fas fa-leaf"></i> Измерения в миллиметрах · ИИ анализ
         </div>
     </div>
 
     <script>
-        // ========== ОПРЕДЕЛЕНИЕ УСТРОЙСТВА ==========
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        const deviceElement = document.getElementById('deviceType');
+        // ========== НАСТРОЙКА ==========
+        const API_URL = 'http://192.168.1.241:5000/analyze'; // ⚡ ЗАМЕНИТЕ НА ВАШ IP!
         
-        if (isMobile) {
-            deviceElement.textContent = '📱 мобильный режим';
-            document.getElementById('galleryBtnText').textContent = '📁 Галерея';
-            document.getElementById('cameraBtnText').textContent = '📸 Камера';
-            document.getElementById('hintText').textContent = 'Сфотографируйте растение с доской 10 мм';
-        } else {
-            deviceElement.textContent = '💻 компьютер';
-            document.getElementById('galleryBtnText').textContent = 'Выбрать фото';
-            document.getElementById('cameraBtnText').textContent = 'Камера (если есть)';
-            document.getElementById('hintText').textContent = 'Шахматная доска 10 мм для калибровки';
-        }
-
         // ========== ЭЛЕМЕНТЫ ==========
         const dropArea = document.getElementById('dropArea');
-        const fileInput = document.getElementById('fileInput');
         const galleryInput = document.getElementById('galleryInput');
+        const cameraInput = document.getElementById('cameraInput');
         const galleryBtn = document.getElementById('galleryBtn');
         const cameraBtn = document.getElementById('cameraBtn');
         const progressSection = document.getElementById('progressSection');
@@ -584,22 +236,22 @@
         const resultsPanel = document.getElementById('resultsPanel');
         const resultImage = document.getElementById('resultImage');
         const notification = document.getElementById('notification');
-        const historyGrid = document.getElementById('historyGrid');
-
-        // ========== ХРАНИЛИЩЕ ИСТОРИИ ==========
-        let analysisHistory = JSON.parse(localStorage.getItem('floraHistory')) || [];
+        const calibText = document.getElementById('calibrationText');
 
         // ========== УВЕДОМЛЕНИЯ ==========
-        function showNotification(message, type = 'success') {
-            notification.textContent = message;
+        function showNotification(msg, type = 'success') {
+            notification.textContent = msg;
             notification.style.background = type === 'success' ? '#3e7659' : '#c44545';
             notification.classList.add('show');
             setTimeout(() => notification.classList.remove('show'), 3000);
         }
 
-        // ========== ДЕМО-АНАЛИЗ ==========
+        // ========== АНАЛИЗ С ИИ ==========
         async function analyzeWithAI(file) {
-            // Показываем превью
+            const formData = new FormData();
+            formData.append('image', file);
+
+            // Превью
             const reader = new FileReader();
             reader.onload = e => resultImage.src = e.target.result;
             reader.readAsDataURL(file);
@@ -608,117 +260,88 @@
             resultsPanel.style.display = 'none';
             progressFill.style.width = '20%';
 
-            // Имитация анализа
-            setTimeout(() => progressFill.style.width = '40%', 500);
-            setTimeout(() => progressFill.style.width = '70%', 1000);
-            setTimeout(() => {
+            try {
+                progressFill.style.width = '40%';
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                progressFill.style.width = '70%';
+                
+                if (!response.ok) throw new Error(`Ошибка ${response.status}`);
+
+                const data = await response.json();
+                progressFill.style.width = '90%';
+
+                if (data.measurements) {
+                    document.getElementById('rootLength').textContent = (data.measurements.root?.total_length || 0).toFixed(1);
+                    document.getElementById('rootArea').textContent = (data.measurements.root?.total_area || 0).toFixed(1);
+                    document.getElementById('stemLength').textContent = (data.measurements.stem?.total_length || 0).toFixed(1);
+                    document.getElementById('stemArea').textContent = (data.measurements.stem?.total_area || 0).toFixed(1);
+                    document.getElementById('leafLength').textContent = (data.measurements.leaf?.total_length || 0).toFixed(1);
+                    document.getElementById('leafArea').textContent = (data.measurements.leaf?.total_area || 0).toFixed(1);
+                    document.getElementById('flowerLength').textContent = (data.measurements.flower?.total_length || 0).toFixed(1);
+                    document.getElementById('flowerArea').textContent = (data.measurements.flower?.total_area || 0).toFixed(1);
+                    
+                    const total = (data.measurements.root?.total_area || 0) +
+                                  (data.measurements.stem?.total_area || 0) +
+                                  (data.measurements.leaf?.total_area || 0) +
+                                  (data.measurements.flower?.total_area || 0);
+                    document.getElementById('totalArea').textContent = total.toFixed(1);
+                }
+
+                if (data.calibration) {
+                    calibText.innerHTML = `<i class="fas fa-check-circle"></i> 1px = ${data.calibration.toFixed(4)} мм · клетка 10 мм`;
+                }
+
+                if (data.image) {
+                    resultImage.src = 'data:image/jpeg;base64,' + data.image;
+                }
+
                 progressFill.style.width = '100%';
-                
-                // Генерация демо-данных
-                const demoData = {
-                    root: Math.random() * 20 + 10,
-                    stem: Math.random() * 15 + 5,
-                    leaf: Math.random() * 25 + 15,
-                    flower: Math.random() * 10 + 2
-                };
+                setTimeout(() => {
+                    progressSection.style.display = 'none';
+                    resultsPanel.style.display = 'block';
+                }, 500);
 
-                // Обновление значений
-                document.getElementById('rootLength').textContent = demoData.root.toFixed(1);
-                document.getElementById('rootArea').textContent = (demoData.root * 2.5).toFixed(1);
-                document.getElementById('stemLength').textContent = demoData.stem.toFixed(1);
-                document.getElementById('stemArea').textContent = (demoData.stem * 1.8).toFixed(1);
-                document.getElementById('leafLength').textContent = demoData.leaf.toFixed(1);
-                document.getElementById('leafArea').textContent = (demoData.leaf * 3.2).toFixed(1);
-                document.getElementById('flowerLength').textContent = demoData.flower.toFixed(1);
-                document.getElementById('flowerArea').textContent = (demoData.flower * 1.2).toFixed(1);
-                
-                const total = (demoData.root * 2.5) + (demoData.stem * 1.8) + (demoData.leaf * 3.2) + (demoData.flower * 1.2);
-                document.getElementById('totalArea').textContent = total.toFixed(1);
-                
-                document.getElementById('calibrationText').innerHTML = 
-                    `<i class="fas fa-check-circle"></i> Калибровка: 1px = ${(0.05 + Math.random()*0.02).toFixed(4)} мм`;
+                showNotification('✅ Анализ ИИ завершен');
 
+            } catch (error) {
+                console.error('❌ Ошибка:', error);
+                showNotification('❌ ' + error.message, 'error');
                 progressSection.style.display = 'none';
-                resultsPanel.style.display = 'block';
-
-                // Добавление в историю
-                const date = new Date();
-                const historyItem = {
-                    id: Date.now(),
-                    name: file.name.length > 15 ? file.name.substring(0, 15) + '...' : file.name,
-                    date: `${date.getHours()}:${date.getMinutes()}`,
-                    root: demoData.root.toFixed(1),
-                    leaf: demoData.leaf.toFixed(1)
-                };
-                
-                analysisHistory.unshift(historyItem);
-                if (analysisHistory.length > 5) analysisHistory.pop();
-                localStorage.setItem('floraHistory', JSON.stringify(analysisHistory));
-                updateHistory();
-
-                showNotification('✅ Анализ завершен!');
-            }, 1500);
-        }
-
-        // ========== ОБНОВЛЕНИЕ ИСТОРИИ ==========
-        function updateHistory() {
-            historyGrid.innerHTML = '';
-            analysisHistory.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'history-item';
-                div.innerHTML = `
-                    <div class="history-thumb"><i class="fas fa-leaf"></i></div>
-                    <div class="history-meta">
-                        <span>${item.name}</span>
-                        <span>${item.date}</span>
-                    </div>
-                    <div style="font-size:13px">Корень ${item.root} мм · Лист ${item.leaf} мм</div>
-                `;
-                historyGrid.appendChild(div);
-            });
+            }
         }
 
         // ========== ОБРАБОТЧИКИ ==========
+        // Галерея (всегда открывает выбор фото)
         galleryBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            if (isMobile) {
-                galleryInput.removeAttribute('capture');
-            }
+            e.stopPropagation();
             galleryInput.click();
         });
 
+        // Камера (всегда открывает камеру)
         cameraBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            if (isMobile) {
-                fileInput.setAttribute('capture', 'environment');
-                fileInput.click();
-            } else {
-                fileInput.removeAttribute('capture');
-                fileInput.click();
-            }
+            e.stopPropagation();
+            cameraInput.click();
         });
 
         galleryInput.addEventListener('change', function(e) {
-            if (this.files && this.files[0]) {
-                analyzeWithAI(this.files[0]);
-            }
+            if (this.files && this.files[0]) analyzeWithAI(this.files[0]);
+            this.value = ''; // Сбрасываем, чтобы можно было выбрать тот же файл
         });
 
-        fileInput.addEventListener('change', function(e) {
-            if (this.files && this.files[0]) {
-                analyzeWithAI(this.files[0]);
-            }
+        cameraInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) analyzeWithAI(this.files[0]);
+            this.value = '';
         });
 
         dropArea.addEventListener('click', (e) => {
-            if (!e.target.closest('button')) {
-                if (isMobile) {
-                    fileInput.setAttribute('capture', 'environment');
-                    fileInput.click();
-                } else {
-                    galleryInput.click();
-                }
-            }
+            if (!e.target.closest('button')) galleryInput.click();
         });
 
         dropArea.addEventListener('dragover', (e) => {
@@ -736,14 +359,6 @@
             if (e.dataTransfer.files && e.dataTransfer.files[0]) {
                 analyzeWithAI(e.dataTransfer.files[0]);
             }
-        });
-
-        // ========== ЗАГРУЗКА ИСТОРИИ ==========
-        updateHistory();
-
-        // ========== ОБРАБОТКА ОШИБОК ==========
-        window.addEventListener('error', (e) => {
-            console.log('Ошибка:', e.message);
         });
     </script>
 </body>
